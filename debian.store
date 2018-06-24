@@ -1,1 +1,1 @@
-{"parent": "debian/bouncy/rosidl_typesupport_connext_c", "trimbase": "", "trim": "", "base": "53798ae", "previous": "bf155ef"}
+{"base": "be1fb33", "previous": "a6ac6dd", "parent": "debian/bouncy/rosidl_typesupport_connext_c", "trim": "", "trimbase": ""}
