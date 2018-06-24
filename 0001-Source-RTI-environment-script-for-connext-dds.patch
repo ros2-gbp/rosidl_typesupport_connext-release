@@ -1,0 +1,60 @@
+From d04a1be2e75d35c5449aef9349d0900a908746a9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
+Date: Sun, 24 Jun 2018 13:12:43 -0700
+Subject: [PATCH] Source RTI environment script for connext dds.
+
+---
+ debian/rules.em | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/debian/rules.em b/debian/rules.em
+index 9c9604d..877b1b6 100755
+--- a/debian/rules.em
++++ b/debian/rules.em
+@@ -25,6 +25,8 @@ override_dh_auto_configure:
+ 	# In case we're installing to a non-standard location, look for a setup.sh
+ 	# in the install tree that was dropped by catkin, and source it.  It will
+ 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
++	if [ -f /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash ]; then \
++	. /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash; fi && \
+ 	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
+ 	dh_auto_configure -- \
+ 		-DCMAKE_INSTALL_PREFIX="@(InstallationPrefix)" \
+@@ -34,6 +36,8 @@ override_dh_auto_build:
+ 	# In case we're installing to a non-standard location, look for a setup.sh
+ 	# in the install tree that was dropped by catkin, and source it.  It will
+ 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
++	if [ -f /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash ]; then \
++	. /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash; fi && \
+ 	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
+ 	dh_auto_build
+ 
+@@ -41,6 +45,8 @@ override_dh_auto_test:
+ 	# In case we're installing to a non-standard location, look for a setup.sh
+ 	# in the install tree that was dropped by catkin, and source it.  It will
+ 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
++	if [ -f /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash ]; then \
++	. /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash; fi && \
+ 	echo -- Running tests. Even if one of them fails the build is not canceled.
+ 	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
+ 	dh_auto_test || true
+@@ -49,6 +55,8 @@ override_dh_shlibdeps:
+ 	# In case we're installing to a non-standard location, look for a setup.sh
+ 	# in the install tree that was dropped by catkin, and source it.  It will
+ 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
++	if [ -f /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash ]; then \
++	. /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash; fi && \
+ 	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
+ 	dh_shlibdeps -l$(CURDIR)/debian/@(Package)/@(InstallationPrefix)/lib/
+ 
+@@ -56,5 +64,7 @@ override_dh_auto_install:
+ 	# In case we're installing to a non-standard location, look for a setup.sh
+ 	# in the install tree that was dropped by catkin, and source it.  It will
+ 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
++	if [ -f /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash ]; then \
++	. /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash; fi && \
+ 	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
+ 	dh_auto_install
+-- 
+2.7.4
+
