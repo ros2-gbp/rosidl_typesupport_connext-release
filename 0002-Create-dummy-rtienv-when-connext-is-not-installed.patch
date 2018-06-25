@@ -1,0 +1,28 @@
+From 5d3dfb65088aef1f5892331f8fd69f23418ad881 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
+Date: Mon, 25 Jun 2018 05:10:15 -0700
+Subject: [PATCH 2/2] Create dummy rtienv when connext is not installed.
+
+---
+ debian/rules.em | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/debian/rules.em b/debian/rules.em
+index f909c15..6ede6e7 100755
+--- a/debian/rules.em
++++ b/debian/rules.em
+@@ -64,7 +64,9 @@ override_dh_auto_install: /tmp/rtienv.sh
+ 	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
+ 	dh_auto_install
+ 
+-/tmp/rtienv.sh: /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash
++/tmp/rtienv.sh:
++	if [ -f /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash ]; then \
+ 	sed -e 's:\$${BASH_SOURCE\[0\]}:/opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash:' \
+ 	/opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash \
+-	> /tmp/rtienv.sh
++	> /tmp/rtienv.sh; \
++	else touch /tmp/rtienv.sh; fi
+-- 
+2.7.4
+

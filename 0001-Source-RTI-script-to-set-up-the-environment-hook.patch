@@ -1,7 +1,7 @@
-From 8ac11392f52bed9eebfd3694b222ddf07274f8d9 Mon Sep 17 00:00:00 2001
+From 4cc729f32483c599a4f56ed97381847e18ea4ee4 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Sun, 24 Jun 2018 19:56:27 -0700
-Subject: [PATCH] Source RTI script to set up the environment hook.
+Subject: [PATCH 1/2] Source RTI script to set up the environment hook.
 
 ---
  debian/rules.em | 20 +++++++++++++++-----
