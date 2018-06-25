@@ -64,7 +64,9 @@ override_dh_auto_install: /tmp/rtienv.sh
 	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
 	dh_auto_install
 
-/tmp/rtienv.sh: /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash
+/tmp/rtienv.sh:
+	if [ -f /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash ]; then \
 	sed -e 's:\$${BASH_SOURCE\[0\]}:/opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash:' \
 	/opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash \
-	> /tmp/rtienv.sh
+	> /tmp/rtienv.sh; \
+	else touch /tmp/rtienv.sh; fi
