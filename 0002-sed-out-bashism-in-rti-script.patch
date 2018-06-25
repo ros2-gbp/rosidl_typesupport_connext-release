@@ -1,7 +1,7 @@
-From 50da0ef389583e426ab87f7d5fc053a723934e96 Mon Sep 17 00:00:00 2001
+From 530ecf96ee22a4faec840c61152a68e0ed0e86ba Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Sun, 24 Jun 2018 15:31:08 -0700
-Subject: [PATCH 2/2] sed out bashism in rti script.
+Subject: [PATCH 2/3] sed out bashism in rti script.
 
 ---
  debian/rules.em | 20 ++++++++++----------
