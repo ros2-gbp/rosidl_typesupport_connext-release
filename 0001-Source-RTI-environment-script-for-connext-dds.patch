@@ -1,4 +1,4 @@
-From 22d1bc46af4de92256de80cd69311c829d3b912b Mon Sep 17 00:00:00 2001
+From d44274c189ceb9e4974c91b4a318e0b2f55dd467 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Sun, 24 Jun 2018 13:12:43 -0700
 Subject: [PATCH 1/2] Source RTI environment script for connext dds.
