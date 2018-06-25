@@ -1,4 +1,4 @@
-From 5d3dfb65088aef1f5892331f8fd69f23418ad881 Mon Sep 17 00:00:00 2001
+From 2bbfee4ed6f7d41cd1d3e40191120adaa6ac42e5 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Mon, 25 Jun 2018 05:10:15 -0700
 Subject: [PATCH 2/2] Create dummy rtienv when connext is not installed.
