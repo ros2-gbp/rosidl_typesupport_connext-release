@@ -1,4 +1,4 @@
-From edcc9801fb55cc35db326f59f1d6fe7fa0a57cac Mon Sep 17 00:00:00 2001
+From 4240077410e8886b485a107e458483b20b0bf180 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Sun, 24 Jun 2018 19:57:26 -0700
 Subject: [PATCH 3/3] Remove explicit RTI script sourcing.
