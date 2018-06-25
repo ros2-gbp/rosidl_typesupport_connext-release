@@ -1,4 +1,4 @@
-From 661bd8f13ad6382b5684e6f2550f2c197bb6f05a Mon Sep 17 00:00:00 2001
+From 15a1ca104fa1467c3eedee5a5f21a1d77efed9e0 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Sun, 24 Jun 2018 20:05:48 -0700
 Subject: [PATCH 3/3] Remove direct sourcing of RTI script.

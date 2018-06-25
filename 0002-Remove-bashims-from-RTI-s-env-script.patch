@@ -1,4 +1,4 @@
-From 5688ac391e537d8114883b411636a8e8dbf23a7d Mon Sep 17 00:00:00 2001
+From 17e9f3d0c9283b7cf112379ff94bf348e26d4aa7 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Sun, 24 Jun 2018 15:35:04 -0700
 Subject: [PATCH 2/3] Remove bashims from RTI's env script.
