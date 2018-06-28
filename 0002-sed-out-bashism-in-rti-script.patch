@@ -1,4 +1,4 @@
-From e0212cf0f517ddc28af90702bf30d13d6455d070 Mon Sep 17 00:00:00 2001
+From e5bbcea7575c91ecfd26f097723a24c927630f67 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Sun, 24 Jun 2018 15:31:08 -0700
 Subject: [PATCH 2/3] sed out bashism in rti script.
@@ -67,5 +67,5 @@ index 877b1b6..f8c4ab7 100755
 +	/opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash \
 +	> /tmp/rtienv.sh
 -- 
-2.7.4
+2.17.1
 
