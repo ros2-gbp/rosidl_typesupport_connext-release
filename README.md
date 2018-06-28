@@ -1,3 +1,29 @@
+## rosidl_typesupport_connext (bouncy) - 0.5.3-0
+
+The packages in the `rosidl_typesupport_connext` repository were released into the `bouncy` distro by running `/usr/bin/bloom-release -r bouncy -t bouncy rosidl_typesupport_connext` on `Thu, 28 Jun 2018 23:52:56 -0000`
+
+These packages were released:
+- `connext_cmake_module`
+- `rosidl_typesupport_connext_c`
+- `rosidl_typesupport_connext_cpp`
+
+Version of package(s) in repository `rosidl_typesupport_connext`:
+
+- upstream repository: https://github.com/ros2/rosidl_typesupport_connext.git
+- release repository: https://github.com/ros2-gbp/rosidl_typesupport_connext-release.git
+- rosdistro version: `0.5.2-0`
+- old version: `0.5.2-0`
+- new version: `0.5.3-0`
+
+Versions of tools used:
+
+- bloom version: `0.6.5`
+- catkin_pkg version: `0.4.3`
+- rosdep version: `0.12.2`
+- rosdistro version: `0.6.8`
+- vcstools version: `0.1.40`
+
+
 ## rosidl_typesupport_connext (bouncy) - 0.5.2-0
 
 The packages in the `rosidl_typesupport_connext` repository were released into the `bouncy` distro by running `/usr/bin/bloom-release rosidl_typesupport_connext -r bouncy -t bouncy` on `Mon, 25 Jun 2018 18:44:11 -0000`
