@@ -1,4 +1,4 @@
-From 978c4b3b5737a00c54de85d6677a195b4dbd6544 Mon Sep 17 00:00:00 2001
+From 4ade8b1570547f22111cf82fb75b214ca4c274b8 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Sun, 24 Jun 2018 20:05:48 -0700
 Subject: [PATCH 3/3] Remove direct sourcing of RTI script.
@@ -57,5 +57,5 @@ index f8c4ab7..b219689 100755
 -	/opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash \
 -	> /tmp/rtienv.sh
 -- 
-2.7.4
+2.17.1
 

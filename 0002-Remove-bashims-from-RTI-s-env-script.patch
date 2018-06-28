@@ -1,4 +1,4 @@
-From 077f6c09231bd94ed18079405fb710936730b98f Mon Sep 17 00:00:00 2001
+From 209332e286f349db88d5525f06892d7344722e2e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Sun, 24 Jun 2018 15:35:04 -0700
 Subject: [PATCH 2/3] Remove bashims from RTI's env script.
@@ -66,5 +66,5 @@ index d393083..f8c4ab7 100755
 +	/opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash \
 +	> /tmp/rtienv.sh
 -- 
-2.7.4
+2.17.1
 
