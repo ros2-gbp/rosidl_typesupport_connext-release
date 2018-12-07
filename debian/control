@@ -1,0 +1,12 @@
+Source: ros-crystal-rosidl-typesupport-connext-c
+Section: misc
+Priority: extra
+Maintainer: Dirk Thomas <dthomas@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-crystal-ament-cmake, ros-crystal-ament-lint-auto, ros-crystal-ament-lint-common, ros-crystal-connext-cmake-module, ros-crystal-rosidl-cmake, ros-crystal-rosidl-generator-c, ros-crystal-rosidl-typesupport-connext-cpp, ros-crystal-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-crystal-rosidl-typesupport-connext-c
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-crystal-ament-cmake, ros-crystal-connext-cmake-module, ros-crystal-rmw, ros-crystal-rosidl-cmake, ros-crystal-rosidl-generator-c, ros-crystal-rosidl-generator-dds-idl, ros-crystal-rosidl-parser, ros-crystal-rosidl-typesupport-connext-cpp, ros-crystal-ros-workspace
+Description: Generate the C interfaces for RTI Connext.
