@@ -1,3 +1,29 @@
+## rosidl_typesupport_connext (crystal) - 0.6.4-0
+
+The packages in the `rosidl_typesupport_connext` repository were released into the `crystal` distro by running `/home/steven/osrf/venv.bloom/bin/bloom-release -r crystal rosidl_typesupport_connext --override-release-repository-push-url git@github.com:ros2-gbp/rosidl_typesupport_connext-release` on `Fri, 11 Jan 2019 23:35:53 -0000`
+
+These packages were released:
+- `connext_cmake_module`
+- `rosidl_typesupport_connext_c`
+- `rosidl_typesupport_connext_cpp`
+
+Version of package(s) in repository `rosidl_typesupport_connext`:
+
+- upstream repository: https://github.com/ros2/rosidl_typesupport_connext.git
+- release repository: https://github.com/ros2-gbp/rosidl_typesupport_connext-release.git
+- rosdistro version: `0.6.3-0`
+- old version: `0.6.3-0`
+- new version: `0.6.4-0`
+
+Versions of tools used:
+
+- bloom version: `0.7.1`
+- catkin_pkg version: `0.4.3`
+- rosdep version: `0.12.2`
+- rosdistro version: `0.7.1`
+- vcstools version: `0.1.40`
+
+
 ## rosidl_typesupport_connext (crystal) - 0.6.3-0
 
 The packages in the `rosidl_typesupport_connext` repository were released into the `crystal` distro by running `/usr/bin/bloom-release -r crystal rosidl_typesupport_connext --override-release-repository-push-url git@github.com:ros2-gbp/rosidl_typesupport_connext-release` on `Fri, 14 Dec 2018 01:30:44 -0000`
