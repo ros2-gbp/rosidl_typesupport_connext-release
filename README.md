@@ -1,3 +1,29 @@
+## rosidl_typesupport_connext (dashing) - 0.7.0-1
+
+The packages in the `rosidl_typesupport_connext` repository were released into the `dashing` distro by running `/usr/bin/bloom-release -n -r dashing rosidl_typesupport_connext --override-release-repository-push-url git@github.com:ros2-gbp/rosidl_typesupport_connext-release` on `Sat, 13 Apr 2019 19:00:26 -0000`
+
+These packages were released:
+- `connext_cmake_module`
+- `rosidl_typesupport_connext_c`
+- `rosidl_typesupport_connext_cpp`
+
+Version of package(s) in repository `rosidl_typesupport_connext`:
+
+- upstream repository: https://github.com/ros2/rosidl_typesupport_connext.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `0.7.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.8.0`
+- catkin_pkg version: `0.4.11`
+- rosdep version: `0.15.1`
+- rosdistro version: `0.7.3`
+- vcstools version: `0.1.40`
+
+
 ## rosidl_typesupport_connext (crystal) - 0.6.4-0
 
 The packages in the `rosidl_typesupport_connext` repository were released into the `crystal` distro by running `/home/steven/osrf/venv.bloom/bin/bloom-release -r crystal rosidl_typesupport_connext --override-release-repository-push-url git@github.com:ros2-gbp/rosidl_typesupport_connext-release` on `Fri, 11 Jan 2019 23:35:53 -0000`
