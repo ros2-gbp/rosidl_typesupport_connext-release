@@ -1,4 +1,4 @@
-From 92365f0d91132a67a46863d9fbf7ea4475c6b097 Mon Sep 17 00:00:00 2001
+From f0260639f6bc468a94c6bdc10482b6cacb6198e4 Mon Sep 17 00:00:00 2001
 From: Michael Carroll <michael@openrobotics.org>
 Date: Thu, 26 Sep 2019 14:51:34 -0500
 Subject: [PATCH 2/2] Revert "Convert vendor env script to sh and source it."

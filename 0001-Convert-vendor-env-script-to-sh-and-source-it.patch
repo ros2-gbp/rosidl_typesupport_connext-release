@@ -1,4 +1,4 @@
-From 1c9916596f92f73bb5085a23e1fe7c927c1fbcdc Mon Sep 17 00:00:00 2001
+From 7a06854fab30c03756ca3aa7bb7c96a3e488ae61 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Fri, 16 Nov 2018 12:33:54 -0800
 Subject: [PATCH 1/2] Convert vendor env script to sh and source it.
