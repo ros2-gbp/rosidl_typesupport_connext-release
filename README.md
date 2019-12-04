@@ -1,3 +1,29 @@
+## rosidl_typesupport_connext (eloquent) - 0.8.4-1
+
+The packages in the `rosidl_typesupport_connext` repository were released into the `eloquent` distro by running `/usr/bin/bloom-release -r eloquent -t eloquent rosidl_typesupport_connext` on `Wed, 04 Dec 2019 19:18:25 -0000`
+
+These packages were released:
+- `connext_cmake_module`
+- `rosidl_typesupport_connext_c`
+- `rosidl_typesupport_connext_cpp`
+
+Version of package(s) in repository `rosidl_typesupport_connext`:
+
+- upstream repository: https://github.com/ros2/rosidl_typesupport_connext.git
+- release repository: https://github.com/ros2-gbp/rosidl_typesupport_connext-release.git
+- rosdistro version: `0.8.3-1`
+- old version: `0.8.3-1`
+- new version: `0.8.4-1`
+
+Versions of tools used:
+
+- bloom version: `0.9.0`
+- catkin_pkg version: `0.4.14`
+- rosdep version: `0.18.0`
+- rosdistro version: `0.7.5`
+- vcstools version: `0.1.42`
+
+
 ## rosidl_typesupport_connext (eloquent) - 0.8.3-1
 
 The packages in the `rosidl_typesupport_connext` repository were released into the `eloquent` distro by running `/usr/bin/bloom-release -r eloquent -t eloquent rosidl_typesupport_connext` on `Wed, 04 Dec 2019 16:46:18 -0000`
