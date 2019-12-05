@@ -14,17 +14,14 @@
 
 #include <rosidl_typesupport_connext_c/wstring_conversion.hpp>
 
-#ifndef _WIN32
-# pragma GCC diagnostic push
-# pragma GCC diagnostic ignored "-Wpedantic"
-# ifdef __clang__
-#  pragma clang diagnostic ignored "-Wdeprecated-register"
-#  pragma clang diagnostic ignored "-Wreturn-type-c-linkage"
-# endif
+#ifdef __clang__
+# pragma clang diagnostic push
+# pragma clang diagnostic ignored "-Wdeprecated-register"
+# pragma clang diagnostic ignored "-Wreturn-type-c-linkage"
 #endif
 #include "ndds/ndds_c.h"
-#ifndef _WIN32
-# pragma GCC diagnostic pop
+#ifdef __clang__
+# pragma clang diagnostic pop
 #endif
 #include "rosidl_generator_c/u16string_functions.h"
 
