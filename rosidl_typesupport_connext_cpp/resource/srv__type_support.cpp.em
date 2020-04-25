@@ -13,7 +13,7 @@ header_files = [
     'rosidl_typesupport_connext_cpp/identifier.hpp',
     'rosidl_typesupport_connext_cpp/service_type_support.h',
     'rosidl_typesupport_connext_cpp/service_type_support_decl.hpp',
-    include_base + '/' + c_include_prefix + '__struct.hpp',
+    include_base + '/detail/' + c_include_prefix + '__struct.hpp',
     include_base + '/dds_connext/' + cpp_include_prefix + '_Support.h',
     include_base + '/dds_connext/' + cpp_include_prefix + '_Plugin.h'
 ]
@@ -30,6 +30,9 @@ dds_specific_header_files = [
 
 #ifndef _WIN32
 # pragma GCC diagnostic push
+# if __GNUC__ >= 9
+#  pragma GCC diagnostic ignored "-Wclass-memaccess"
+# endif
 # pragma GCC diagnostic ignored "-Wunused-parameter"
 # ifdef __clang__
 #  pragma clang diagnostic ignored "-Wdeprecated-register"
@@ -282,7 +285,7 @@ const char * destroy_replier__@(service.namespaced_type.name)(
 
 bool take_request__@(service.namespaced_type.name)(
   void * untyped_replier,
-  rmw_request_id_t * request_header,
+  rmw_service_info_t * request_header,
   void * untyped_ros_request)
 {
   using ReplierType = connext::Replier<
@@ -314,15 +317,17 @@ bool take_request__@(service.namespaced_type.name)(
   }
 
   size_t SAMPLE_IDENTITY_SIZE = 16;
-  memcpy(&(request_header->writer_guid[0]), request.identity().writer_guid.value, SAMPLE_IDENTITY_SIZE);
+  memcpy(&(request_header->request_id.writer_guid[0]), request.identity().writer_guid.value, SAMPLE_IDENTITY_SIZE);
 
-  request_header->sequence_number = ((int64_t)request.identity().sequence_number.high) << 32 | request.identity().sequence_number.low;
+  request_header->request_id.sequence_number = ((int64_t)request.identity().sequence_number.high) << 32 | request.identity().sequence_number.low;
+  request_header->source_timestamp = 0;
+  request_header->received_timestamp = 0;
   return true;
 }
 
 bool take_response__@(service.namespaced_type.name)(
   void * untyped_requester,
-  rmw_request_id_t * request_header,
+  rmw_service_info_t * request_header,
   void * untyped_ros_response)
 {
   using RequesterType = connext::Requester<
@@ -350,7 +355,9 @@ bool take_response__@(service.namespaced_type.name)(
   int64_t sequence_number =
     (((int64_t)response.related_identity().sequence_number.high) << 32) |
     response.related_identity().sequence_number.low;
-  request_header->sequence_number = sequence_number;
+  request_header->request_id.sequence_number = sequence_number;
+  request_header->source_timestamp = 0;
+  request_header->received_timestamp = 0;
 
   bool converted =
     @(__ros_srv_pkg_prefix)::typesupport_connext_cpp::convert_dds_message_to_ros(response.data(), ros_response);

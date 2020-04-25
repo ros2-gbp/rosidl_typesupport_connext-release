@@ -25,8 +25,8 @@ header_files = [
     'rosidl_typesupport_connext_c/wstring_conversion.hpp',
     'rosidl_typesupport_connext_cpp/message_type_support.h',
     package_name + '/msg/rosidl_typesupport_connext_c__visibility_control.h',
-    include_base + '/' + c_include_prefix + '__struct.h',
-    include_base + '/' + c_include_prefix + '__functions.h',
+    include_base + '/detail/' + c_include_prefix + '__struct.h',
+    include_base + '/detail/' + c_include_prefix + '__functions.h',
 ]
 
 dds_specific_header_files = [
@@ -79,30 +79,20 @@ from collections import OrderedDict
 includes = OrderedDict()
 for member in message.structure.members:
     if isinstance(member.type, AbstractSequence) and isinstance(member.type.value_type, BasicType):
-       includes.setdefault('rosidl_generator_c/primitives_sequence.h', []).append(member.name)
-       includes.setdefault('rosidl_generator_c/primitives_sequence_functions.h', []).append(member.name)
+       includes.setdefault('rosidl_runtime_c/primitives_sequence.h', []).append(member.name)
+       includes.setdefault('rosidl_runtime_c/primitives_sequence_functions.h', []).append(member.name)
        continue
     type_ = member.type
     if isinstance(type_, AbstractNestedType):
        type_ = type_.value_type
     if isinstance(type_, AbstractString):
-        includes.setdefault('rosidl_generator_c/string.h', []).append(member.name)
-        includes.setdefault('rosidl_generator_c/string_functions.h', []).append(member.name)
+        includes.setdefault('rosidl_runtime_c/string.h', []).append(member.name)
+        includes.setdefault('rosidl_runtime_c/string_functions.h', []).append(member.name)
     if isinstance(type_, AbstractWString):
-        includes.setdefault('rosidl_generator_c/u16string.h', []).append(member.name)
-        includes.setdefault('rosidl_generator_c/u16string_functions.h', []).append(member.name)
+        includes.setdefault('rosidl_runtime_c/u16string.h', []).append(member.name)
+        includes.setdefault('rosidl_runtime_c/u16string_functions.h', []).append(member.name)
     if isinstance(type_, NamespacedType):
-        include_prefix = idl_structure_type_to_c_include_prefix(type_)
-        if include_prefix.endswith('__request'):
-            include_prefix = include_prefix[:-9]
-        elif include_prefix.endswith('__response'):
-            include_prefix = include_prefix[:-10]
-        if include_prefix.endswith('__goal'):
-            include_prefix = include_prefix[:-6]
-        elif include_prefix.endswith('__result'):
-            include_prefix = include_prefix[:-8]
-        elif include_prefix.endswith('__feedback'):
-            include_prefix = include_prefix[:-10]
+        include_prefix = idl_structure_type_to_c_include_prefix(type_, 'detail')
         includes.setdefault(include_prefix + '__struct.h', []).append(member.name)
         includes.setdefault(include_prefix + '__functions.h', []).append(member.name)
 }@
@@ -191,7 +181,8 @@ if isinstance(type_, AbstractNestedType):
 @[  if isinstance(type_, NamespacedType)]@
     const message_type_support_callbacks_t * @('__'.join(type_.namespaced_name()))__callbacks =
       static_cast<const message_type_support_callbacks_t *>(
-      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_connext_c, @(', '.join(type_.namespaced_name()))
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_connext_c, @(', '.join(type_.namespaced_name()))
       )()->data);
 @[  end if]@
 @[  if isinstance(member.type, AbstractNestedType)]@
@@ -199,7 +190,7 @@ if isinstance(type_, AbstractNestedType):
     size_t size = @(member.type.size);
 @[    else]@
     size_t size = ros_message->@(member.name).size;
-    if (size > (std::numeric_limits<DDS_Long>::max)()) {
+    if (size > (std::numeric_limits<size_t>::max)()) {
       fprintf(stderr, "array size exceeds maximum DDS sequence size\n");
       return false;
     }
@@ -228,7 +219,7 @@ if isinstance(type_, AbstractNestedType):
       auto & ros_i = ros_message->@(member.name).data[i];
 @[    end if]@
 @[    if isinstance(type_, AbstractString)]@
-      const rosidl_generator_c__String * str = &ros_i;
+      const rosidl_runtime_c__String * str = &ros_i;
       if (str->capacity == 0 || str->capacity <= str->size) {
         fprintf(stderr, "string capacity not greater than size\n");
         return false;
@@ -239,7 +230,7 @@ if isinstance(type_, AbstractNestedType):
       }
       dds_message->@(member.name)_[static_cast<DDS_Long>(i)] = DDS_String_dup(str->data);
 @[    elif isinstance(type_, AbstractWString)]@
-      const rosidl_generator_c__U16String * str = &ros_i;
+      const rosidl_runtime_c__U16String * str = &ros_i;
       if (str->capacity == 0 || str->capacity <= str->size) {
         fprintf(stderr, "string capacity not greater than size\n");
         return false;
@@ -269,7 +260,7 @@ if isinstance(type_, AbstractNestedType):
 @[    end if]@
     }
 @[  elif isinstance(member.type, AbstractString)]@
-    const rosidl_generator_c__String * str = &ros_message->@(member.name);
+    const rosidl_runtime_c__String * str = &ros_message->@(member.name);
     if (str->capacity == 0 || str->capacity <= str->size) {
       fprintf(stderr, "string capacity not greater than size\n");
       return false;
@@ -280,7 +271,7 @@ if isinstance(type_, AbstractNestedType):
     }
     dds_message->@(member.name)_ = DDS_String_dup(str->data);
 @[  elif isinstance(member.type, AbstractWString)]@
-    const rosidl_generator_c__U16String * str = &ros_message->@(member.name);
+    const rosidl_runtime_c__U16String * str = &ros_message->@(member.name);
     if (str->capacity == 0 || str->capacity <= str->size) {
       fprintf(stderr, "string capacity not greater than size\n");
       return false;
@@ -363,9 +354,9 @@ if isinstance(type_, AbstractNestedType):
 @[      end if]@
 @[    elif isinstance(type_, AbstractString)]@
       if (!ros_i.data) {
-        rosidl_generator_c__String__init(&ros_i);
+        rosidl_runtime_c__String__init(&ros_i);
       }
-      bool succeeded = rosidl_generator_c__String__assign(
+      bool succeeded = rosidl_runtime_c__String__assign(
         &ros_i,
         dds_message->@(member.name)_[i]);
       if (!succeeded) {
@@ -374,12 +365,12 @@ if isinstance(type_, AbstractNestedType):
       }
 @[    elif isinstance(type_, AbstractWString)]@
       if (!ros_i.data) {
-        rosidl_generator_c__U16String__init(&ros_i);
+        rosidl_runtime_c__U16String__init(&ros_i);
       }
       bool succeeded = rosidl_typesupport_connext_c::wstring_to_u16string(dds_message->@(member.name)_[i], ros_i);
       if (!succeeded) {
         fprintf(stderr, "failed to create wstring from u16string\n");
-        rosidl_generator_c__U16String__fini(&ros_i);
+        rosidl_runtime_c__U16String__fini(&ros_i);
         return false;
       }
 @[    elif isinstance(type_, NamespacedType)]@
@@ -397,9 +388,9 @@ if isinstance(type_, AbstractNestedType):
     }
 @[  elif isinstance(member.type, AbstractString)]@
     if (!ros_message->@(member.name).data) {
-      rosidl_generator_c__String__init(&ros_message->@(member.name));
+      rosidl_runtime_c__String__init(&ros_message->@(member.name));
     }
-    bool succeeded = rosidl_generator_c__String__assign(
+    bool succeeded = rosidl_runtime_c__String__assign(
       &ros_message->@(member.name),
       dds_message->@(member.name)_);
     if (!succeeded) {
@@ -408,12 +399,12 @@ if isinstance(type_, AbstractNestedType):
     }
 @[  elif isinstance(member.type, AbstractWString)]@
     if (!ros_message->@(member.name).data) {
-      rosidl_generator_c__U16String__init(&ros_message->@(member.name));
+      rosidl_runtime_c__U16String__init(&ros_message->@(member.name));
     }
     bool succeeded = rosidl_typesupport_connext_c::wstring_to_u16string(dds_message->@(member.name)_, ros_message->@(member.name));
     if (!succeeded) {
       fprintf(stderr, "failed to create wstring from u16string\n");
-      rosidl_generator_c__U16String__fini(&ros_message->@(member.name));
+      rosidl_runtime_c__U16String__fini(&ros_message->@(member.name));
       return false;
     }
 @[  elif isinstance(member.type, BasicType)]@
