@@ -1,1 +1,1 @@
-{"trim": "", "base": "8767e3d", "trimbase": "", "parent": "debian/foxy/rosidl_typesupport_connext_cpp", "previous": "93e9060"}
+{"base": "e4ed9bc", "parent": "debian/foxy/rosidl_typesupport_connext_cpp", "previous": "352986d", "trim": "", "trimbase": ""}
