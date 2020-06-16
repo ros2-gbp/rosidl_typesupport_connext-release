@@ -1,4 +1,4 @@
-From 7c0ce97ae26fcfab789538f98ce8b7382a2bb28a Mon Sep 17 00:00:00 2001
+From 3b446e0db50b9d391dbae3d1150769508541bd17 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Fri, 16 Nov 2018 12:33:54 -0800
 Subject: [PATCH] Convert vendor env script to sh and source it.
@@ -70,5 +70,5 @@ index 9c9604d..6ede6e7 100755
 +	> /tmp/rtienv.sh; \
 +	else touch /tmp/rtienv.sh; fi
 -- 
-2.25.1
+2.27.0
 
