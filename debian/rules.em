@@ -13,30 +13,30 @@ export DH_VERBOSE=1
 #  https://code.ros.org/trac/ros/ticket/2977
 #  https://code.ros.org/trac/ros/ticket/3842
 export LDFLAGS=
-export PKG_CONFIG_PATH=/opt/ros/foxy/lib/pkgconfig
+export PKG_CONFIG_PATH=@(InstallationPrefix)/lib/pkgconfig
 # Explicitly enable -DNDEBUG, see:
 # 	https://github.com/ros-infrastructure/bloom/issues/327
 export DEB_CXXFLAGS_MAINT_APPEND=-DNDEBUG
 
 %:
-	dh $@ -v --buildsystem=cmake
+	dh $@@ -v --buildsystem=cmake
 
 override_dh_auto_configure: /tmp/rtienv.sh
 	# In case we're installing to a non-standard location, look for a setup.sh
 	# in the install tree that was dropped by catkin, and source it.  It will
 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
 	. /tmp/rtienv.sh && \
-	if [ -f "/opt/ros/foxy/setup.sh" ]; then . "/opt/ros/foxy/setup.sh"; fi && \
+	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
 	dh_auto_configure -- \
-		-DCMAKE_INSTALL_PREFIX="/opt/ros/foxy" \
-		-DAMENT_PREFIX_PATH="/opt/ros/foxy"
+		-DCMAKE_INSTALL_PREFIX="@(InstallationPrefix)" \
+		-DAMENT_PREFIX_PATH="@(InstallationPrefix)"
 
 override_dh_auto_build: /tmp/rtienv.sh
 	# In case we're installing to a non-standard location, look for a setup.sh
 	# in the install tree that was dropped by catkin, and source it.  It will
 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
 	. /tmp/rtienv.sh && \
-	if [ -f "/opt/ros/foxy/setup.sh" ]; then . "/opt/ros/foxy/setup.sh"; fi && \
+	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
 	dh_auto_build
 
 override_dh_auto_test: /tmp/rtienv.sh
@@ -45,7 +45,7 @@ override_dh_auto_test: /tmp/rtienv.sh
 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
 	echo -- Running tests. Even if one of them fails the build is not canceled.
 	. /tmp/rtienv.sh && \
-	if [ -f "/opt/ros/foxy/setup.sh" ]; then . "/opt/ros/foxy/setup.sh"; fi && \
+	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
 	dh_auto_test || true
 
 override_dh_shlibdeps: /tmp/rtienv.sh
@@ -53,15 +53,15 @@ override_dh_shlibdeps: /tmp/rtienv.sh
 	# in the install tree that was dropped by catkin, and source it.  It will
 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
 	. /tmp/rtienv.sh && \
-	if [ -f "/opt/ros/foxy/setup.sh" ]; then . "/opt/ros/foxy/setup.sh"; fi && \
-	dh_shlibdeps -l$(CURDIR)/debian/ros-foxy-connext-cmake-module//opt/ros/foxy/lib/
+	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
+	dh_shlibdeps -l$(CURDIR)/debian/@(Package)/@(InstallationPrefix)/lib/
 
 override_dh_auto_install: /tmp/rtienv.sh
 	# In case we're installing to a non-standard location, look for a setup.sh
 	# in the install tree that was dropped by catkin, and source it.  It will
 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
 	. /tmp/rtienv.sh && \
-	if [ -f "/opt/ros/foxy/setup.sh" ]; then . "/opt/ros/foxy/setup.sh"; fi && \
+	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
 	dh_auto_install
 
 /tmp/rtienv.sh:
