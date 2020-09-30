@@ -60,7 +60,7 @@ override_dh_auto_install: /tmp/rtienv.sh
 	# In case we're installing to a non-standard location, look for a setup.sh
 	# in the install tree and source it.  It will set things like
 	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
-	/tmp/rtienv.sh && \
+	. /tmp/rtienv.sh && \
 	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
 	dh_auto_install
 
