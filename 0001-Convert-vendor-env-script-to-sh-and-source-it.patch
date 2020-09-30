@@ -1,14 +1,14 @@
-From ac355cba1f5d2e6ac2fa5853b316847c79b62073 Mon Sep 17 00:00:00 2001
+From e41f1e235eee0a0b6ee90e080b7d8f18738a8d70 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Steven!=20Ragnar=C3=B6k?= <steven@nuclearsandwich.com>
 Date: Fri, 16 Nov 2018 12:33:54 -0800
-Subject: [PATCH] Convert vendor env script to sh and source it.
+Subject: [PATCH 1/2] Convert vendor env script to sh and source it.
 
 ---
  debian/rules.em | 22 +++++++++++++++++-----
  1 file changed, 17 insertions(+), 5 deletions(-)
 
 diff --git a/debian/rules.em b/debian/rules.em
-index 9c9604d..6ede6e7 100755
+index eb57e64..5b76fe4 100755
 --- a/debian/rules.em
 +++ b/debian/rules.em
 @@ -21,40 +21,52 @@ export DEB_CXXFLAGS_MAINT_APPEND=-DNDEBUG
@@ -18,8 +18,8 @@ index 9c9604d..6ede6e7 100755
 -override_dh_auto_configure:
 +override_dh_auto_configure: /tmp/rtienv.sh
  	# In case we're installing to a non-standard location, look for a setup.sh
- 	# in the install tree that was dropped by catkin, and source it.  It will
- 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
+ 	# in the install tree and source it.  It will set things like
+ 	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
 +	. /tmp/rtienv.sh && \
  	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
  	dh_auto_configure -- \
@@ -29,8 +29,8 @@ index 9c9604d..6ede6e7 100755
 -override_dh_auto_build:
 +override_dh_auto_build: /tmp/rtienv.sh
  	# In case we're installing to a non-standard location, look for a setup.sh
- 	# in the install tree that was dropped by catkin, and source it.  It will
- 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
+ 	# in the install tree and source it.  It will set things like
+ 	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
 +	. /tmp/rtienv.sh && \
  	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
  	dh_auto_build
@@ -38,8 +38,8 @@ index 9c9604d..6ede6e7 100755
 -override_dh_auto_test:
 +override_dh_auto_test: /tmp/rtienv.sh
  	# In case we're installing to a non-standard location, look for a setup.sh
- 	# in the install tree that was dropped by catkin, and source it.  It will
- 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
+ 	# in the install tree and source it.  It will set things like
+ 	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
  	echo -- Running tests. Even if one of them fails the build is not canceled.
 +	. /tmp/rtienv.sh && \
  	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
@@ -48,8 +48,8 @@ index 9c9604d..6ede6e7 100755
 -override_dh_shlibdeps:
 +override_dh_shlibdeps: /tmp/rtienv.sh
  	# In case we're installing to a non-standard location, look for a setup.sh
- 	# in the install tree that was dropped by catkin, and source it.  It will
- 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
+ 	# in the install tree and source it.  It will set things like
+ 	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
 +	. /tmp/rtienv.sh && \
  	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
  	dh_shlibdeps -l$(CURDIR)/debian/@(Package)/@(InstallationPrefix)/lib/
@@ -57,9 +57,9 @@ index 9c9604d..6ede6e7 100755
 -override_dh_auto_install:
 +override_dh_auto_install: /tmp/rtienv.sh
  	# In case we're installing to a non-standard location, look for a setup.sh
- 	# in the install tree that was dropped by catkin, and source it.  It will
- 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
-+	. /tmp/rtienv.sh && \
+ 	# in the install tree and source it.  It will set things like
+ 	# CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
++	/tmp/rtienv.sh && \
  	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
  	dh_auto_install
 +
