@@ -1,3 +1,8 @@
+@{
+# Drop membership in rosidl_typesupport_cpp_packages group
+Provides = [p for p in Provides if p != 'ros-rolling-rosidl-typesupport-cpp-packages(member)']
+Supplements = [p for p in Supplements if p != 'ros-rolling-rosidl-typesupport-cpp-packages(all)']
+}@
 %bcond_without tests
 %bcond_without weak_deps
 
