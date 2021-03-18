@@ -1,4 +1,4 @@
-From 572b45391d138f1857efe4a673e91e3a8715fc3e Mon Sep 17 00:00:00 2001
+From 8d9b22a5c778e18eb310d25ae1ca582bd3394926 Mon Sep 17 00:00:00 2001
 From: Scott K Logan <logans@cottsay.net>
 Date: Thu, 28 Jan 2021 17:19:44 -0800
 Subject: [PATCH] Drop membership in rosidl_typesupport_c_packages group
@@ -40,5 +40,5 @@ index c0d00ea..167174f 100644
  %bcond_without weak_deps
  
 -- 
-2.29.2
+2.25.1
 
