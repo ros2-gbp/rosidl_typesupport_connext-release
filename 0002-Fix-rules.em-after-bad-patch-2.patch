@@ -1,4 +1,4 @@
-From f7e32430ab6a7686e291d8e66fbd8a80e5971fe0 Mon Sep 17 00:00:00 2001
+From dc245b386bb9ad783def75d4962d8cb1370b05b0 Mon Sep 17 00:00:00 2001
 From: Michel Hidalgo <michel@ekumenlabs.com>
 Date: Wed, 30 Sep 2020 12:19:24 -0300
 Subject: [PATCH 2/2] Fix rules.em after bad patch (#2)
@@ -21,5 +21,5 @@ index 5b76fe4..18bf2a4 100755
  	dh_auto_install
  
 -- 
-2.17.1
+2.25.1
 
