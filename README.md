@@ -1,3 +1,29 @@
+## rosidl_typesupport_connext (rolling) - 1.1.0-1
+
+The packages in the `rosidl_typesupport_connext` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --track rolling --rosdistro rolling rosidl_typesupport_connext` on `Thu, 18 Mar 2021 15:49:59 -0000`
+
+These packages were released:
+- `connext_cmake_module`
+- `rosidl_typesupport_connext_c`
+- `rosidl_typesupport_connext_cpp`
+
+Version of package(s) in repository `rosidl_typesupport_connext`:
+
+- upstream repository: https://github.com/ros2/rosidl_typesupport_connext.git
+- release repository: https://github.com/ros2-gbp/rosidl_typesupport_connext-release.git
+- rosdistro version: `1.0.2-2`
+- old version: `1.0.2-2`
+- new version: `1.1.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.2`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.20.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## rosidl_typesupport_connext (foxy) - 1.0.2-1
 
 The packages in the `rosidl_typesupport_connext` repository were released into the `foxy` distro by running `/usr/bin/bloom-release -r foxy rosidl_typesupport_connext` on `Wed, 07 Oct 2020 17:25:04 -0000`
