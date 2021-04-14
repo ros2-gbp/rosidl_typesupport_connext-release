@@ -22,4 +22,5 @@ def generate_typesupport_connext_c(arguments_file):
         'idl__dds_connext__type_support_c.cpp.em':
         'dds_connext/%s__type_support_c.cpp'
     }
-    return generate_files(arguments_file, mapping)
+    generate_files(arguments_file, mapping)
+    return 0

@@ -2,11 +2,10 @@
 Changelog for package rosidl_typesupport_connext_c
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.1.0 (2021-03-18)
+1.0.3 (2021-04-14)
 ------------------
-* Expose Connext C typesupport generation via rosidl generate CLI (`#67 <https://github.com/ros2/rosidl_typesupport_connext/issues/67>`_)
 * Update maintainers (`#64 <https://github.com/ros2/rosidl_typesupport_connext/issues/64>`_)
-* Contributors: Jacob Perron, Michel Hidalgo
+* Contributors: Jacob Perron
 
 1.0.2 (2020-09-29)
 ------------------
